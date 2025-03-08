@@ -22,4 +22,4 @@ def publish_article(request: HttpRequest, pk: int) -> JsonResponse:
     article = get_object_or_404(Article, pk=pk)
     article.published = True
     article.save()
-    return JsonResponse({'status': 'published'})
+    return render(request, 'partials/_article_row.html', {'article': article})
