@@ -5,3 +5,12 @@ most likley because these requests modify data or state of the application
 (demonstrated in home app)
 
 note: CSRF Token missing error will be displayed in server terminal, not in browser console
+
+
+
+in order to send a post or put or delete request from client to server, CSRF token must be aquired and submitted along with the request.
+django docs have a specific function for this that can be added to js (right above the event listener for publish buttons).
+
+NOTE: this function can only be used if some settings are set,
+e.g CSRF_USE_SESSIONS must be false
+and CSRF_COOKIE_HTTPONLY must be also false
