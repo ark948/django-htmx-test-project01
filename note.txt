@@ -25,6 +25,7 @@ user01@email.com
 17. add a view for user's contacts
 18. add partials dir to templates
 19. add partial template to its parent
+20. adding search feature (with text input from daisyui and htmx get function)
 
 
 
