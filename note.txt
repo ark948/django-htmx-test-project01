@@ -1,1 +1,27 @@
 htmx-contacthub (contact manager)
+
+
+
+Setting up django
+1. venv
+2. django project
+3. django app (contacts)
+4. templates dir inside app
+5. urls.py file to app
+6. forms.py to app
+7. custom user model in contacts models.py
+8. one simple view in contacts app that will render contacts.html
+9. register the model in admin.py
+10. modify settings.py
+11. project urls.py
+12. app's urls
+13. add app to settings.py and django-extensions
+
+
+Setting up tailwind
+    cdn script tag added to base.html
+Setting up daisy-ui (component library for tailwind)
+    CDN not recommended for production
+    cdn link tag added to base.html
+Setting up htmx
+    cdn script tag added to base.html
