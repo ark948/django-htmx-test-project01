@@ -36,3 +36,14 @@ Setting up daisy-ui (component library for tailwind)
     cdn link tag added to base.html
 Setting up htmx
     cdn script tag added to base.html
+
+
+
+
+search functionality:
+    hx-get -> attribute that will allow an elmenet to send a GET request (will be added to search input element)
+    hx-trigger -> the event that triggers the request is determined by this
+        keyup -> means every time user enters a key, event is triggered
+        we'll add a modifer later to prevent the server from getting overwhelmed
+        
+    hx-target -> an elmenet that will receive the resposne of the request and is swapped with
