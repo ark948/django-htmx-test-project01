@@ -1,0 +1,7 @@
+CSRF tokens are needed for post, put and delete http methods
+most likley because these requests modify data or state of the application
+
+
+(demonstrated in home app)
+
+note: CSRF Token missing error will be displayed in server terminal, not in browser console

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <div class="m-12">
+        <div>
+            <h1 class="text-4xl text-success mb-4">Articles</h1>
+            <label class="input mb-2">
+                <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                    </g>
+                </svg>
+                <input 
+                    type="search"
+                    required
+                    placeholder="Search"
+                    name="search"
+                    hx-get="{% url 'search' %}"
+                    hx-trigger="keyup delay:500ms"
+                    hx-target="#contacts-list"
+                    />
+            </label>
+            <div id="articles-list">
+                {% if articles %}
+                    <div class="overflow-x-auto">
+                        <table class="table table-zebra table-pin-rows">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Published</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for article in articles %}
+                                    <tr>
+                                        <td>{{ article.title }}</td>
+                                        <td>{{ article.description }}</td>
+                                        <td>{{ article.published }}</td>
+
+                                        <td>
+                                            {% if not article.published %}
+                                            <button class="btn btn-xs btn-accent" id="publish-button" data-article-id="{{ article.pk }}">Publish</button>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div role="alert" class="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>No article found.</span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll('#publish-button').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    let pk = e.target.dataset.articleId;
+                    let url = `publish-article/${pk}/`
+                    fetch(url, { method: "POST" })
+                });
+            });
+        });
+    </script>
+</body>
+</html>
