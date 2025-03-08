@@ -16,6 +16,13 @@ Setting up django
 11. project urls.py
 12. app's urls
 13. add app to settings.py and django-extensions
+14. add contact model to contact app
+15. register it with admin
+16. create a superuser
+user01
+user01@email.com
+123
+
 
 
 Setting up tailwind
