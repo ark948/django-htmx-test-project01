@@ -14,3 +14,11 @@ django docs have a specific function for this that can be added to js (right abo
 NOTE: this function can only be used if some settings are set,
 e.g CSRF_USE_SESSIONS must be false
 and CSRF_COOKIE_HTTPONLY must be also false
+
+
+after successfully sending the request with CSRF token, next if the process was ok, we should update the DOM.
+we do that with HTMX.
+
+actually bringing in HTMX can entirely replace all these plain js code. (but i'll keep them both for learning purposes)
+
+to include CSRF tokens in HTMX request, we use django-htmx package, (tips > replace the body tag)

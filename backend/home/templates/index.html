@@ -46,17 +46,7 @@
                             </thead>
                             <tbody>
                                 {% for article in articles %}
-                                    <tr>
-                                        <td>{{ article.title }}</td>
-                                        <td>{{ article.description }}</td>
-                                        <td>{{ article.published }}</td>
-
-                                        <td>
-                                            {% if not article.published %}
-                                            <button class="btn btn-xs btn-accent" id="publish-button" data-article-id="{{ article.pk }}">Publish</button>
-                                            {% endif %}
-                                        </td>
-                                    </tr>
+                                    {% include 'partials/_article_row.html' %}
                                 {% endfor %}
                             </tbody>
                         </table>
