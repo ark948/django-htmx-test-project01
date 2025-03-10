@@ -16,6 +16,8 @@ def index(request):
 
 @login_required
 def search_contacts(request):
+    import time
+    time.sleep(1) # used to test the loading incdicator
     query = request.GET.get('search', "") # name of the search input field, default to empty if not provided
     contacts = request.user.contacts.filter(
         Q(name__icontains=query) | Q(email__icontains=query)

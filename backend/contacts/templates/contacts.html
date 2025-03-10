@@ -19,7 +19,11 @@
             hx-get="{% url 'search' %}"
             hx-trigger="keyup delay:500ms"
             hx-target="#contacts-list"
+            hx-indicator="#spinner"
+            hx-on::before-request="document.getElementById('contacts-list').style.opacity=0.4"
+            hx-on::after-request="document.getElementById('contacts-list').style.opacity=1.0"
             />
+            {% include 'partials/spinner.html' %}
     </label>
     {% include 'partials/contact_list.html' %}
 </div>

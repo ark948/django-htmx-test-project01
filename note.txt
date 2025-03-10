@@ -47,3 +47,8 @@ search functionality:
         we'll add a modifer later to prevent the server from getting overwhelmed
         we will add htmx delay modifer, it will wait a given amount of time before issuing the request and reset the countdown
     hx-target -> an elmenet that will receive the resposne of the request and is swapped with
+
+
+
+displaying loading logo while searching:
+(using htmx -> hx-indicator and daisy's loading component)
