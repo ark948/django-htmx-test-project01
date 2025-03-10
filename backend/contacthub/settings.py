@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "home.middleware.MaintenanceModeMiddleware"
 ]
 
 ROOT_URLCONF = 'contacthub.urls'
@@ -126,3 +127,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'contacts.User'
 LOGIN_URL = '/admin/'
+
+
+# This variable is just to test the custom middleware
+MAINTENANCE_MODE = False
