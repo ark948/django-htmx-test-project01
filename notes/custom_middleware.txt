@@ -1,0 +1,2 @@
+custom middleware and test was added (home app)
+middlewares must be added to MIDDLEWARE config var in settings.py
