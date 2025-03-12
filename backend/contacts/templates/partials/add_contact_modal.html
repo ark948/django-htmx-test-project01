@@ -29,8 +29,9 @@
 
             <div class="modal-action">
                 <button type="button" class="btn" onclick="contact_modal.close()">Close</button>
-                <button type="submit" class="btn btn-primary">Add Contact</button>
+                <button type="submit" class="btn btn-primary" hx-post="{% url 'new' %}" hx-target="#result" hx-swap="innerHTML">Add Contact</button>
             </div>
+            <h4 class="font-bold" id="result"></h4>
         </form>
     </div>
 </dialog>

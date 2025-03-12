@@ -24,3 +24,6 @@ class ContactForm(forms.ModelForm):
         fields = (
             "name", "email"
         )
+
+
+

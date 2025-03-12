@@ -52,3 +52,7 @@ search functionality:
 
 displaying loading logo while searching:
 (using htmx -> hx-indicator and daisy's loading component)
+
+
+NOTE: to send a post request with form, hx-post should be added to button only.
+htmx will automatically detect the input fields
