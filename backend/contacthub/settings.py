@@ -50,7 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "home.middleware.MaintenanceModeMiddleware"
+    "home.middleware.MaintenanceModeMiddleware",
+    "home.middleware.IPBlacklistMiddleware"
 ]
 
 ROOT_URLCONF = 'contacthub.urls'
@@ -131,3 +132,8 @@ LOGIN_URL = '/admin/'
 
 # This variable is just to test the custom middleware
 MAINTENANCE_MODE = False
+
+# for ipblacklist middleware
+BANNED_IPS = [
+    # '127.0.0.1',
+]
