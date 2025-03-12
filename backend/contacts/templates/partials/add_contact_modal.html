@@ -1,7 +1,7 @@
 <dialog id="contact_modal" class="modal">
     <div class="modal-box">
         <h3 class="font-bold text-lg mb-4">Add New Contact</h3>
-        <form method="post" class="mb-4">
+        <form method="post" class="mb-4" hx-post="{% url 'new' %}" hx-target="#result" hx-swap="innerHTML">
             {% csrf_token %}
             <div class="form-control w-full">
                 <label class="label">
@@ -29,7 +29,7 @@
 
             <div class="modal-action">
                 <button type="button" class="btn" onclick="contact_modal.close()">Close</button>
-                <button type="submit" class="btn btn-primary" hx-post="{% url 'new' %}" hx-target="#result" hx-swap="innerHTML">Add Contact</button>
+                <button type="submit" class="btn btn-primary">Add Contact</button>
             </div>
             <h4 class="font-bold" id="result"></h4>
         </form>

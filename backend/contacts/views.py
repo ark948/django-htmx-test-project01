@@ -1,4 +1,7 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render
+from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.views.decorators.http import require_http_methods
@@ -37,9 +40,20 @@ def search_contacts(request):
 # my own
 @login_required
 @require_http_methods(['POST'])
-def new_contact(request):
+def new_contact(request, *args, **kwargs):
     form = ContactForm(request.POST)
     if form.is_valid():
         new_contact = Contact(name=form.cleaned_data['name'], email=form.cleaned_data['email'], user=request.user)
         new_contact.save()
         return HttpResponse("Successfully added.")
+    
+
+
+class ContacList(ListView):
+    template_name = "contacts.html"
+    model = Contact
+    context_object_name = "contacts"
+
+    def get_queryset(self) -> QuerySet[Any]:
+        user = self.request.user
+        return user.contacts.all()
