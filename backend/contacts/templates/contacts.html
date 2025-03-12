@@ -4,36 +4,9 @@
 
 <div>
     <h1 class="text-4xl text-success mb-4">Contact Manager</h1>
-    <form method="post" class="mb-4">
-        {% csrf_token %}
-        <div class="form-control w-full">
-            <label class="label">
-                <span class="label-text">Name</span>
-            </label>
-            {{ form.name }}
-            {% if form.name.errors %}
-                <label class="label text-error">
-                    {{ form.name.errors }}
-                </label>
-            {% endif %}
-        </div>
 
-        <div class="form-control w-full">
-            <label class="label">
-                <span class="label-text">Email</span>
-            </label>
-            {{ form.email }}
-            {% if form.email.errors %}
-                <label class="label text-error">
-                    {{ form.email.errors }}
-                </label>
-            {% endif %}
-        </div>
-
-        <div class="mt-4">
-            <button type="submit" class="btn btn-primary">Add Contact</button>
-        </div>
-    </form>
+    <button class="btn btn-neutral btn-sm mb-4 mr-4" onclick="contact_modal.showModal()">New Contact</button>
+    {% include 'partials/add_contact_modal.html' %}
     <label class="input mb-2">
         <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
@@ -52,8 +25,8 @@
             hx-indicator="#spinner"
             hx-on::before-request="document.getElementById('contacts-list').style.opacity=0.4"
             hx-on::after-request="document.getElementById('contacts-list').style.opacity=1.0"
-            />
-            {% include 'partials/spinner.html' %}
+        />
+        {% include 'partials/spinner.html' %}
     </label>
 
     {% include 'partials/contact_list.html' %}

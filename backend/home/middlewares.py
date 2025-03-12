@@ -42,3 +42,21 @@ class IPBlacklistMiddleware:
             
         resposne = self.get_response(request)
         return resposne
+    
+
+class HTMXMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        # header = request.header.get(htmx_header) or None
+        header = request.META.get('HX-Request') or None
+        if header:
+            request.htmx = header == "true"
+            print("HTMX True")
+        else:
+            request.htmx = False
+            print("HTMX False")
+
+        resposne = self.get_response(request)
+        return resposne

@@ -50,8 +50,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "home.middleware.MaintenanceModeMiddleware",
-    "home.middleware.IPBlacklistMiddleware"
+    "home.middlewares.MaintenanceModeMiddleware",
+    "home.middlewares.IPBlacklistMiddleware",
+    "home.middlewares.HTMXMiddleware"
 ]
 
 ROOT_URLCONF = 'contacthub.urls'
