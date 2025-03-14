@@ -49,6 +49,21 @@ def new_contact(request, *args, **kwargs):
     
 
 
+@login_required
+@require_http_methods(['POST'])
+def create_contact(request):
+    form = ContactForm(request.POST)
+    if form.is_valid():
+        contact = form.save(commit=False)
+        contact.user = request.user
+        contact.save()
+        context = {'contact': contact}
+        response = render(request, 'partials/contact_row.html', context=context)
+        response['HX-Trigger'] = 'success'
+        return response
+    
+
+
 class ContacList(ListView):
     template_name = "contacts.html"
     model = Contact
