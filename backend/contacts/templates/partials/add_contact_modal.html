@@ -2,7 +2,7 @@
     <div class="modal-box">
         <h3 class="font-bold text-lg mb-4">Add New Contact</h3>
         <form 
-            hx-post="{% url 'create' %}" 
+            hx-post="{% url 'create' %}"
             hx-target="#contact-table-body" 
             hx-swap="afterbegin"
             hx-on:success="contact_modal.close(); this.reset();"

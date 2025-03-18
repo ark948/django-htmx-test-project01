@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from .models import Contact
 
 
@@ -18,6 +19,12 @@ class ContactForm(forms.ModelForm):
             'placeholder': 'Email Address'
         })
     )
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if Contact.objects.filter(user=self.initial.get('user'), email=email).exists():
+            raise ValidationError("A contact with this email already exists.")
+        return email
 
     class Meta:
         model = Contact

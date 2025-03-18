@@ -32,4 +32,11 @@
     {% include 'partials/contact_list.html' %}
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.addEventListener('fail', () => {
+            document.getElementById('contact_modal').showModal();
+        });
+    });
+</script>
 {% endblock %}
