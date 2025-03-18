@@ -20,6 +20,13 @@ class ContactForm(forms.ModelForm):
         })
     )
 
+    # dummy version, replace with actual validation code
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        if name.startswith('X'):
+            raise ValidationError('No names start with X!')
+        return name
+
     def clean_email(self):
         email = self.cleaned_data['email']
         if Contact.objects.filter(user=self.initial.get('user'), email=email).exists():
