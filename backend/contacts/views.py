@@ -82,8 +82,7 @@ class ContacList(ListView):
     
 
 
-@login_required
-def custom_htmx_page(request: HttpRequest) -> HttpResponse:
+def custom_htmx_process01(request: HttpRequest) -> HttpResponse:
     if request.method == "POST":
         message = request.POST['message']
         context = {
@@ -95,3 +94,15 @@ def custom_htmx_page(request: HttpRequest) -> HttpResponse:
     else:
         response = render(request, 'test_page.html', context={})
         return response
+
+
+def custom_htmx_process02(request: HttpRequest) -> JsonResponse:
+    if request.method == "POST":
+        message = request.POST['message']
+        data = {'message': message}
+        resposne = JsonResponse(data)
+        resposne['HX-Trigger'] = 'success'
+        return resposne
+    else:
+        resposne = render(request, 'test_page.html', context={})
+        return resposne

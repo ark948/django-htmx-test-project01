@@ -7,5 +7,5 @@ urlpatterns = [
     path('search/', views.search_contacts, name='search'),
     path('new/', views.new_contact, name='new'), # my own
     path('create/', views.create_contact, name='create'),
-    path('test-page/', views.custom_htmx_page, name='test'),
+    path('test-page/', views.custom_htmx_process01, name='test'),
 ]

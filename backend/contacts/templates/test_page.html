@@ -3,7 +3,6 @@
 
 {% block content %}
     <div>
-        <h3>hello</h3>
         <form 
             hx-post="{% url 'test' %}" 
             hx-target="#message-info"
@@ -14,6 +13,8 @@
             <input type="text" id="message" name="message">
             <button type="submit">Send</button>
         </form>
-        <div id="message-info"></div>
+        <div id="message-info">
+            {% include 'partials/show_message.html' %}
+        </div>
     </div>
 {% endblock content %}
