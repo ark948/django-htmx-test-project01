@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.views.decorators.http import require_http_methods
 from django.http.response import JsonResponse, HttpResponse
+from django.http.request import HttpRequest
 
 
 from .forms import ContactForm
@@ -78,3 +79,19 @@ class ContacList(ListView):
     def get_queryset(self) -> QuerySet[Any]:
         user = self.request.user
         return user.contacts.all()
+    
+
+
+@login_required
+def custom_htmx_page(request: HttpRequest) -> HttpResponse:
+    if request.method == "POST":
+        message = request.POST['message']
+        context = {
+            'message': message
+        }
+        response = render(request, 'partials/show_message.html', context=context)
+        response['HX-Trigger'] = 'success'
+        return response
+    else:
+        response = render(request, 'test_page.html', context={})
+        return response

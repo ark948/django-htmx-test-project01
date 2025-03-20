@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div>
+        <h3>hello</h3>
+        <form 
+            hx-post="{% url 'test' %}" 
+            hx-target="#message-info"
+            hx-on:success="this.reset();"
+            >
+            {% csrf_token %}
+            Your message:
+            <input type="text" id="message" name="message">
+            <button type="submit">Send</button>
+        </form>
+        <div id="message-info"></div>
+    </div>
+{% endblock content %}
