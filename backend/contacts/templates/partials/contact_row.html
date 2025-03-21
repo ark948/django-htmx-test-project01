@@ -3,6 +3,11 @@
     <td>{{ contact.email }}</td>
     <td>{{ contact.created_at|date:"M d, Y" }}</td>
     <td>
-        <button class="btn btn-xs btn-error">Delete</button>
+        <button 
+            class="btn btn-xs btn-error"
+            hx-delete="{% url 'delete' contact.id %}"
+            hx-target="#contacts-list">
+            Delete
+        </button>
     </td>
 </tr>
