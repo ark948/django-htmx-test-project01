@@ -24,5 +24,20 @@
             </svg>
             <span>No contacts found.</span>
         </div>
+        <table class="table table-zebra table-pin-rows">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="contact-table-body">
+                {% for contact in contacts %}
+                    {% include 'partials/contact_row.html' %}
+                {% endfor %}
+            </tbody>
+        </table>
     {% endif %}
 </div>
