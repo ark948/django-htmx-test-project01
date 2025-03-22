@@ -7,6 +7,11 @@
 
     <button class="btn btn-neutral btn-sm mb-4 mr-4" onclick="contact_modal.showModal()">New Contact</button>
     {% include 'partials/add_contact_modal.html' %}
+    <button 
+        class="btn btn-neutral btn-sm mb-4 mr-4"
+        hx-get="{% url 'export' %}">
+        Download CSV
+    </button>
     <label class="input mb-2">
         <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">

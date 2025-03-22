@@ -5,12 +5,15 @@ from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.views.decorators.http import require_http_methods
-from django.http.response import JsonResponse, HttpResponse, HttpResponseRedirect
+from django.http.response import JsonResponse, HttpResponse, HttpResponseRedirect, FileResponse
 from django.http.request import HttpRequest
 from django.urls import reverse
+from django.http import HttpResponse
+
 
 from .forms import ContactForm
 from .models import Contact
+from .resources import ContactResource
 
 # Create your views here.
 
@@ -120,3 +123,17 @@ def custom_htmx_process02(request: HttpRequest) -> JsonResponse:
     else:
         resposne = render(request, 'test_page.html', context={})
         return resposne
+
+
+
+# my own
+@login_required
+def export(request) -> FileResponse | HttpResponse:
+    if request.htmx:
+        # will redirect to same url without htmx (won't be ajax)
+        return HttpResponse(headers={'HX-Redirect': request.get_full_path()})
+    contacts = request.user.contacts.all()
+    data = ContactResource().export(contacts)
+    response = HttpResponse(data.csv)
+    response['Content-Disposition'] = 'attachment; filename="contacts.csv"'
+    return response

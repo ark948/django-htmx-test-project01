@@ -56,3 +56,11 @@ displaying loading logo while searching:
 
 NOTE: to send a post request with form, hx-post should be added to button only.
 htmx will automatically detect the input fields
+
+
+
+
+signals
+throttles
+testing
+middlewares

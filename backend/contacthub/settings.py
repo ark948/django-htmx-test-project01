@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_htmx',
+    'import_export',
     'django_extensions',
     'contacts',
     'home',
@@ -51,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django_htmx.middleware.HtmxMiddleware",
     # "home.middlewares.MaintenanceModeMiddleware",
     # "home.middlewares.IPBlacklistMiddleware",
     # "home.middlewares.HTMXMiddleware"
