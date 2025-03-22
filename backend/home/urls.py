@@ -7,5 +7,6 @@ app_name = 'home'
 urlpatterns = [
     path('', views.index, name='index'),
     path('publish-article/<int:pk>/', views.publish_article, name='publish-article'),
-    path('api/', api.index)
+    path('api/', api.index),
+    path('api-sample/', api.SampleView.as_view())
 ]
