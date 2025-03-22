@@ -139,15 +139,15 @@ REST_FRAMEWORK = {
         # 'home.throttles.BurstRateThrottle',
         # 'home.throttles.SustainedRateThrottle',
         # 'rest_framework.throttling.ScopedRateThrottle',
-        'home.throttles.CustomThrottleForFuncViews'
+        # 'home.throttles.CusteomThrottleGet',
+        # 'home.throttles.CustomThrottleForFuncViews'
     ],
     'DEFAULT_THROTTLE_RATES': {
         # 'anon': '50/day',
         # 'user': '20/minute'
         # 'burst': '10/minute', # users can send 10 requests per minute (short term throttle)
         # 'sustained': '15/hour', # users can send 15 requests per hour (long term throttle)
-        # 'basic': '2/minute',
-        'my_custom_scope': "2/minute"
+        'my_custom_scope': "3/minute"
     }
 }
 
