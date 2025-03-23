@@ -10,4 +10,5 @@ urlpatterns = [
     path('delete/<int:pk>/', views.delete_contact, name='delete'), # my own
     path('test-page/', views.custom_htmx_process01, name='test'), # my own
     path('export/', views.export, name='export'),
+    path('charts/', views.charts, name='charts'),
 ]

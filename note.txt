@@ -64,3 +64,6 @@ signals
 throttles
 testing
 middlewares
+data export and import with django-import-export
+charting with plotly
+custom filters

@@ -14,15 +14,20 @@ from django.http import HttpResponse
 from .forms import ContactForm
 from .models import Contact
 from .resources import ContactResource
+from .filters import ContactFilter
 
 # Create your views here.
 
 
 @login_required
 def index(request):
-    contacts = request.user.contacts.all().order_by('-created_at') # minus means descending
+    # contacts = request.user.contacts.all() # minus means descending
+    contacts_filter = ContactFilter(
+        request.GET,
+        queryset=Contact.objects.filter(user=request.user)
+    )
     context = {
-        'contacts': contacts,
+        'filter': contacts_filter,
         'form': ContactForm()
     }
     return render(request, 'contacts.html', context)
@@ -80,7 +85,7 @@ def delete_contact(request: HttpRequest, pk: int):
     item_to_delete = Contact.objects.get(pk=pk)
     if item_to_delete.user == request.user:
         item_to_delete.delete()
-    contacts = request.user.contacts.all().order_by('-created_at')
+    contacts = request.user.contacts.all()
     response = render(request, 'partials/contact_list.html', {'contacts': contacts})
     return response
     
@@ -137,3 +142,10 @@ def export(request) -> FileResponse | HttpResponse:
     response = HttpResponse(data.csv)
     response['Content-Disposition'] = 'attachment; filename="contacts.csv"'
     return response
+
+
+
+# my own
+@login_required
+def charts(request):
+    pass

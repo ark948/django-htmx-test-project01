@@ -8,6 +8,6 @@ from .models import Contact
 @receiver(post_save, sender=Contact, dispatch_uid="contact_created")
 def contact_was_created(sender, instance, created, **kwargs):
     """Send a signal when a contact is created."""
-    print("\nContact created.\n")
+    print("Contact created.")
     if created:
         print("created.")

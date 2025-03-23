@@ -19,7 +19,7 @@ class Contact(models.Model):
 
     class Meta:
         unique_together = ('user', 'email')
-        # this constraint will prevent the addition of an object with the same user and email address
+        ordering = ['-created_at']
 
     def __str__(self):
         return f"{self.name} <{self.email}>"

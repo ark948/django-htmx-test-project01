@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_htmx',
     'import_export',
+    'django_filters',
+    'widget_tweaks',
     'django_extensions',
     'contacts',
     'home',
