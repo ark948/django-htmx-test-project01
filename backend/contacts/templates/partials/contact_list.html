@@ -1,7 +1,7 @@
 {% load widget_tweaks %}
 
 <div id="contacts-list">
-    <div class="grid grid-cols-4 gap-4">
+    <div class="md:grid md:grid-cols-4 md:gap-4" id="contacts-list-container">
         <div class="col-span-3">
             {% if filter %}
             <div class="overflow-x-auto">
@@ -52,7 +52,7 @@
                     {% render_field filter.form.name class="input mb-2" placeholder="Name" %}
                     {% render_field filter.form.email class="input mb-2" type="email" placeholder="youremail@example.com" %}
                 </div>
-                <button class="btn btn-success">
+                <button class="btn btn-success btn-sm">
                     filter
                 </button>
             </form>

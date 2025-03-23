@@ -67,3 +67,6 @@ middlewares
 data export and import with django-import-export
 charting with plotly
 custom filters
+
+
+Filter for contact category will be added later

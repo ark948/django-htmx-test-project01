@@ -10,3 +10,6 @@ class ContactFilter(django_filters.FilterSet):
     class Meta:
         model = Contact
         fields = ['email']
+
+
+
