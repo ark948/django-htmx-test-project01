@@ -29,9 +29,9 @@ class Contact(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     created_at = models.DateTimeField(auto_now_add=True)
-    type = models.CharField(max_length=7, choices=CONTACT_TYPE_CHOICES)
+    # type = models.CharField(max_length=12, choices=CONTACT_TYPE_CHOICES)
     user = models.ForeignKey( User, on_delete=models.CASCADE, related_name='contacts' ) # user.contacts.all() 
-    relation = models.ForeignKey(Relation, on_delete=models.DO_NOTHING, null=True, blank=True)
+    # relation = models.ForeignKey(Relation, on_delete=models.DO_NOTHING, null=True, blank=True)
 
     class Meta:
         unique_together = ('user', 'email')
