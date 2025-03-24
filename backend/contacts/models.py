@@ -36,7 +36,7 @@ class Contact(models.Model):
     class Meta:
         unique_together = ('user', 'email')
         ordering = ['-created_at']
-        verbose_plural_name = "Contacts"
+        verbose_name_plural = "Contacts"
 
     def __str__(self) -> str:
         return f"{self.name} <{self.email}>"
