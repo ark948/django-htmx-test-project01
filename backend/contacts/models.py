@@ -7,7 +7,17 @@ class User(AbstractUser):
 
 
 class Relation(models.Model):
-    RELATION_TITLE_CHOICES = (
+    title = models.CharField(max_length=50, unique=True)
+    
+    class Meta:
+        verbose_name_plural = "Categories"
+
+    def __str__(self) -> str:
+        return self.title
+
+
+class Contact(models.Model):
+    CONTACT_TYPE_CHOICES = (
         ('family', "Family"),
         ('friend', "Friend"),
         ('colleague', "Colleague"),
@@ -16,22 +26,17 @@ class Relation(models.Model):
         ('acquaintance', "Acquaintance"),
     )
 
-    title = models.CharField(max_length=12, choices=RELATION_TITLE_CHOICES)
-
-    def __str__(self) -> str:
-        return self.title
-
-
-class Contact(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     created_at = models.DateTimeField(auto_now_add=True)
+    type = models.CharField(max_length=7, choices=CONTACT_TYPE_CHOICES)
     user = models.ForeignKey( User, on_delete=models.CASCADE, related_name='contacts' ) # user.contacts.all() 
     relation = models.ForeignKey(Relation, on_delete=models.DO_NOTHING, null=True, blank=True)
 
     class Meta:
         unique_together = ('user', 'email')
         ordering = ['-created_at']
+        verbose_plural_name = "Contacts"
 
     def __str__(self) -> str:
         return f"{self.name} <{self.email}>"
