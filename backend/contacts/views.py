@@ -30,7 +30,7 @@ def index(request):
         'filter': contacts_filter,
         'form': ContactForm()
     }
-    return render(request, 'contacts.html', context)
+    return render(request, 'html/contacts/contacts.html', context)
 
 
 
@@ -42,7 +42,7 @@ def search_contacts(request):
     contacts = request.user.contacts.filter(
         Q(name__icontains=query) | Q(email__icontains=query)
     )
-    return render(request, 'partials/contact_list.html', {"contacts": contacts})
+    return render(request, 'html/contacts/partials/contact_list.html', {"contacts": contacts})
 
 
 
@@ -67,11 +67,11 @@ def create_contact(request):
         contact.user = request.user
         contact.save()
         context = {'contact': contact}
-        response = render(request, 'partials/contact_row.html', context=context)
+        response = render(request, 'html/contacts/partials/contact_row.html', context=context)
         response['HX-Trigger'] = 'success'
         return response
     else:
-        response = render(request, 'partials/add_contact_modal.html', {'form': form})
+        response = render(request, 'html/contacts/partials/add_contact_modal.html', {'form': form})
         response['HX-Retarget'] = "#contact_modal"
         response['HX-Reswap'] = 'outerHTML'
         response['HX-Trigger-After-Settle'] = "fail"
@@ -86,13 +86,13 @@ def delete_contact(request: HttpRequest, pk: int):
     if item_to_delete.user == request.user:
         item_to_delete.delete()
     contacts = request.user.contacts.all()
-    response = render(request, 'partials/contact_list.html', {'contacts': contacts})
+    response = render(request, 'html/contacts/partials/contact_list.html', {'contacts': contacts})
     return response
     
 
 
 class ContacList(ListView):
-    template_name = "contacts.html"
+    template_name = "html/contacts/contacts.html"
     model = Contact
     context_object_name = "contacts"
 
@@ -109,11 +109,11 @@ def custom_htmx_process01(request: HttpRequest) -> HttpResponse:
         context = {
             'message': message
         }
-        response = render(request, 'partials/show_message.html', context=context)
+        response = render(request, 'html/contacts/partials/show_message.html', context=context)
         response['HX-Trigger'] = 'success'
         return response
     else:
-        response = render(request, 'test_page.html', context={})
+        response = render(request, 'html/contacts/test_page.html', context={})
         return response
 
 
@@ -126,7 +126,7 @@ def custom_htmx_process02(request: HttpRequest) -> JsonResponse:
         resposne['HX-Trigger'] = 'success'
         return resposne
     else:
-        resposne = render(request, 'test_page.html', context={})
+        resposne = render(request, 'html/contacts/test_page.html', context={})
         return resposne
 
 

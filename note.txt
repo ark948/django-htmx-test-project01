@@ -72,3 +72,6 @@ custom filters
 Filter for contact category will be added later (to finance tracker app (tracker))
 
 adding jinja2
+then adding finance tracker models
+then filter based on category
+then charts

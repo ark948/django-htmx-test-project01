@@ -16,7 +16,7 @@
                     </thead>
                     <tbody id="contact-table-body">
                         {% for contact in filter.qs %}
-                            {% include 'partials/contact_row.html' %}
+                            {% include 'html/contacts/partials/contact_row.html' %}
                         {% endfor %}
                     </tbody>
                 </table>
@@ -39,7 +39,7 @@
                 </thead>
                 <tbody id="contact-table-body">
                     {% for contact in contacts %}
-                        {% include 'partials/contact_row.html' %}
+                        {% include 'html/contacts/partials/contact_row.html' %}
                     {% endfor %}
                 </tbody>
             </table>

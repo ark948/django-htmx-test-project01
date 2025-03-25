@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'html/base.html' %}
 {% load widget_tweaks %}
 {% block content %}
 
@@ -6,7 +6,7 @@
     <h1 class="text-4xl text-success mb-4">Contact Manager</h1>
 
     <button class="btn btn-neutral btn-sm mb-4 mr-4" onclick="contact_modal.showModal()">New Contact</button>
-    {% include 'partials/add_contact_modal.html' %}
+    {% include 'html/contacts/partials/add_contact_modal.html' %}
     <button 
         class="btn btn-neutral btn-sm mb-4 mr-4"
         hx-get="{% url 'export' %}">
@@ -34,9 +34,9 @@
             hx-on::before-request="document.getElementById('contacts-list').style.opacity=0.4"
             hx-on::after-request="document.getElementById('contacts-list').style.opacity=1.0"
         />
-        {% include 'partials/spinner.html' %}
+        {% include 'html/contacts/partials/spinner.html' %}
     </label>
-    {% include 'partials/contact_list.html' %}
+    {% include 'html/contacts/partials/contact_list.html' %}
 </div>
 
 <script>

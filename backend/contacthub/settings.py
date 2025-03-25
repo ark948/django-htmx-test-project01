@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_htmx',
+    'django_jinja',
     'import_export',
     'django_filters',
     'widget_tweaks',
@@ -77,6 +78,15 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
+    },
+
+    {
+        'BACKEND': "django.template.backends.jinja2.Jinja2",
+        'DIRS': [ BASE_DIR / "templates" ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'environment': "contacthub.jinja2.environment"
+        }
     },
 ]
 
