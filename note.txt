@@ -75,3 +75,18 @@ adding jinja2
 then adding finance tracker models
 then filter based on category
 then charts
+
+
+adding HTMX, TailwindCSS, DaisyUI
+
+adding htmx:
+download htmx.min.js file from htmx official, create static dir in root folder, put the file there (in js folder), add STATICFILES_DIRS = [BASE_DIR / "static"]
+to settings.py, add {% load static %} to base.html above DOCTYPE, update htmx script tag with DTL static tag
+
+adding TailwindCSS: (using tailwind cli)
+node.js must be installed,
+> npm install tailwindcss @tailwindcss/vite
+
+
+tracker app:
+1. adding templates (tailwindCSS, DaisyUI, HTMX), models (CustomUser, Transaction)
