@@ -85,7 +85,10 @@ to settings.py, add {% load static %} to base.html above DOCTYPE, update htmx sc
 
 adding TailwindCSS: (using tailwind cli)
 node.js must be installed,
-> npm install tailwindcss @tailwindcss/vite
+> npm install tailwindcss @tailwindcss/cli (it will add node_modules folder, and two files, package-lock.json and package.json)
+import tailwind in main css file, run:
+npx @tailwindcss/cli -i ./static/css/input.css -o ./static/css/output.css --watch
+to build compiled css file, update the tailwind link tag in base.html to use output.css
 
 
 tracker app:
