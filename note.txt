@@ -89,6 +89,10 @@ node.js must be installed,
 import tailwind in main css file, run:
 npx @tailwindcss/cli -i ./static/css/input.css -o ./static/css/output.css --watch
 to build compiled css file, update the tailwind link tag in base.html to use output.css
+next steps are from other sources, (to also add daisyUI):
+> npx tailwindcss init
+update: tailwindcss 4 does not support npx way of doing this.
+(daisyUI is not added yet...)
 
 
 tracker app:
