@@ -47,6 +47,9 @@ INSTALLED_APPS = [
     'django_filters',
     'widget_tweaks',
     'django_extensions',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 
     'contacts',
     'home',
@@ -62,11 +65,15 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django_htmx.middleware.HtmxMiddleware",
 ]
 
+
+# Provider specific settings later
+SOCIALACCOUNT_PROVIDERS = {}
 
 # required by django-debug-toolbar
 INTERNAL_IPS = [
@@ -200,3 +207,12 @@ BANNED_IPS = [
 
 
 STATICFILES_DIRS = [ BASE_DIR / "static" ]
+
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]

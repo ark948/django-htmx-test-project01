@@ -101,3 +101,5 @@ tracker app:
 
 
 adding django-debug-toolbar (done)
+adding django-extensions, django-widget-tweaks (already done)
+adding django-allauth (added, not modified yet)

@@ -26,5 +26,6 @@ urlpatterns = [
     path('', include('contacts.urls')),
     path('home/', include('home.urls')),
     path('tracker/', include('tracker.urls')),
+    path('accounts/', include('allauth.urls')),
     path('__debug__/', include(debug_toolbar.urls)),
 ]
