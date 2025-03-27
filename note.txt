@@ -97,3 +97,7 @@ update: tailwindcss 4 does not support npx way of doing this.
 
 tracker app:
 1. adding templates (tailwindCSS, DaisyUI, HTMX), models (CustomUser, Transaction)
+
+
+
+adding django-debug-toolbar (done)
